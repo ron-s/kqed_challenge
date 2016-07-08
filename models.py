@@ -1,3 +1,6 @@
+
+
+
 class mobile_food_trucks(models.Model):
     locationid = models.IntegerField()
     applicant = models.CharField(max_length=254)

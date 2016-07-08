@@ -1,0 +1,31 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+db.sqlite3
+migrations/
+local_settings.py
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Ipython Notebook
+.ipynb_checkpoints
+
+# hidden project files
+seattle_crime_project/hidden.py
+
+# Virtual Environment
+seattle_crime_venv/
+
+<<<<<<< HEAD
+seattle_crime_app/data/
+
+=======
+>>>>>>> 46f4ba6b704dfa50f7570d7a60d15f79a609a211
+.DS_Store

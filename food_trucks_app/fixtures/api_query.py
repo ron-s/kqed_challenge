@@ -2,7 +2,7 @@ import requests
 import json
 #import time
 
-food_trucks = []
+output = []
 
 
 def get_truck_info():
@@ -18,48 +18,61 @@ def get_truck_info():
 
 	data = r.json()
 
-	#parse the json that you just retrieved
+	#parse the json that you just retrieved 
 	for val in data:
 
 		trucks = {}
-		truck["fields"] = {}
-		trucks["model"] = "food_trucks_app.mobilefoodtrucks"
 		trucks["pk"] = val["objectid"]
-		trucks["fields"]["applicant"] = val["business_name"]
-		trucks["fields"]["address"] = val["address"]
-		trucks["fields"]["status"] = val["permit_status"]
+		trucks["fields"] = {}
+		trucks["model"] = "food_trucks_app.MobileFoodTrucks"
+		
+		try:
+			trucks["fields"]["applicant"] = val["business_name"]
+		except KeyError:
+			trucks["fields"]["applicant"] = ""
+
+		try:
+			trucks["fields"]["address"] = val["address"]
+		except KeyError:
+			trucks["fields"]["status"] = ""
+
+		try:
+			trucks["fields"]["status"] = val["permit_status"]
+		except KeyError:
+			trucks["fields"]["status"] = ""
+
 		try:
 			trucks["fields"]["dayshours"] = val["hours_of_operation"]
-		except:
+		except KeyError:
 			trucks["fields"]["dayshours"] = ""
 
 		try:
 			trucks["fields"]["fooditems"] = val["cuisine"]
-		except:
+		except KeyError:
 			trucks["fields"]["fooditems"] = ""
 
 		try:
 			trucks["fields"]["latitude"] = val["latitude"]
-		except:
-			trucks["fields"]["latitude"] = val["latitude"]
-			
+		except KeyError:
+			trucks["fields"]["latitude"] = ""
+
 		try:
 			trucks["fields"]["longitude"] = val["longitude"]
-		except:
-			trucks["fields"]["longitude"] = val["longitude"]
+		except KeyError:
+			trucks["fields"]["longitude"] = ""
 
 		try:
 			trucks["fields"]["expirationdate"] = val["permit_exp_date"]
-		except:
+		except KeyError:
 			trucks["fields"]["expirationdate"] = ""
 	
 	#add the trucks dict to the food_trucks list
-	food_trucks.append(trucks)
+	output.append(trucks)
 
 
 	#create a json file that contains the results.
 	with open('trucks.json', "w") as f:
-		json.dump(food_trucks, f, indent=2)
+		json.dump(output, f, indent=2)
 
 
 if __name__ == '__main__':

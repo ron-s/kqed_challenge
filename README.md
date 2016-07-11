@@ -15,8 +15,6 @@ Trucks](https://data.sfgov.org/Permitting/Mobile-Food-Facility-Permit/rqzj-sfat)
 * Javascript
 * jQuery
 * Q search for Django
-* GeoDjango
-* OGRInspect
 * DjangoREST API
 * PostGreSQL/SQLite
 * Bootstrap

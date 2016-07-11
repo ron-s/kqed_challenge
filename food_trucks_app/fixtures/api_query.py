@@ -27,6 +27,7 @@ def get_truck_info():
 		trucks["pk"] = val["objectid"]
 		trucks["fields"]["applicant"] = val["business_name"]
 		trucks["fields"]["address"] = val["address"]
+		trucks["fields"]["status"] = val["permit_status"]
 		try:
 			trucks["fields"]["dayshours"] = val["hours_of_operation"]
 		except:
@@ -37,9 +38,15 @@ def get_truck_info():
 		except:
 			trucks["fields"]["fooditems"] = ""
 
-		trucks["fields"]["latitude"] = val["latitude"]
-		trucks["fields"]["longitude"] = val["longitude"]
-		trucks["fields"]["status"] = val["permit_status"]
+		try:
+			trucks["fields"]["latitude"] = val["latitude"]
+		except:
+			trucks["fields"]["latitude"] = val["latitude"]
+			
+		try:
+			trucks["fields"]["longitude"] = val["longitude"]
+		except:
+			trucks["fields"]["longitude"] = val["longitude"]
 
 		try:
 			trucks["fields"]["expirationdate"] = val["permit_exp_date"]

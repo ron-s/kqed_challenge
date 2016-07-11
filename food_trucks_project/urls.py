@@ -17,6 +17,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+
+# Wire up our API using automatic URL routing.
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^', include(router.urls)),
 ]
+

@@ -1,11 +1,10 @@
+from django.db import models
 
-
-
+# Create your models here.
 class mobile_food_trucks(models.Model):
     locationid = models.IntegerField()
     applicant = models.CharField(max_length=254)
     facility = models.CharField(max_length=254)
-    cnn = models.IntegerField()
     descriptio = models.CharField(max_length=254)
     address = models.CharField(max_length=254)
     block_lot = models.CharField(max_length=254)
@@ -14,8 +13,6 @@ class mobile_food_trucks(models.Model):
     permit = models.CharField(max_length=254)
     status = models.CharField(max_length=254)
     food_items = models.CharField(max_length=254)
-    x = models.FloatField()
-    y = models.FloatField()
     latitude = models.FloatField()
     longitude = models.FloatField()
     schedule = models.CharField(max_length=254)
@@ -25,4 +22,3 @@ class mobile_food_trucks(models.Model):
     priorpermi = models.IntegerField()
     exp_date = models.CharField(max_length=254)
     location = models.CharField(max_length=254)
-    geom = models.PointField(srid=-1)

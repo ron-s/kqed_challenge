@@ -22,12 +22,11 @@ from food_trucks_app import views as food_trucks_app_views
 
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'food_trucks_app_mobilefoodtrucks', food_trucks_app_views.MobileFoodTrucksViewSet) # name of the table
+router.register(r'food_trucks_app_mobilefoodtrucks', food_trucks_app_views.MobileFoodTrucksViewSet)  # name of the table
 
 # Wire up our API using automatic URL routing.
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', food_trucks_app_views.home_page),
-    url(r'^food_trucks_app/', include(router.urls)), # name of the app
+    url(r'^food_trucks_app/', include(router.urls)),  # name of the app
 ]
-

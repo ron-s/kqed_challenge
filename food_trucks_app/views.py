@@ -6,7 +6,10 @@ from .serializers import MobileFoodTruckSerializer
 """
 View Controller objects that render serialized JSON data through the Django REST framework.
 """
+
+
 class MobileFoodTrucksViewSet(viewsets.ModelViewSet):
+
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('business_name', 'address', 'hours_of_operation', 'cuisine', 'permit_status' 'permit_exp_date', 'latitude', 'longitude',)
     queryset = MobileFoodTrucks.objects.all()
@@ -14,7 +17,7 @@ class MobileFoodTrucksViewSet(viewsets.ModelViewSet):
 
     class Meta:
         model = MobileFoodTrucks
-        abstract=True
+        abstract = True
 
 
 def home_page(request):

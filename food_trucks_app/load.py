@@ -25,6 +25,7 @@ trucks_mapping = {
 # Copypaste from geodjango tutorial.
 trucks_shp = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data', 'Mobile_Food_Trucks.shp'))
 
+
 def run(verbose=True):
     lm = LayerMapping(MobileFoodTrucks, trucks_shp, trucks_mapping,
                       transform=False, encoding='utf-8')

@@ -1,8 +1,0 @@
-from rest_framework import serializers
-
-
-# Serializers define the API representation.
-class MobileFoodTrucksSerializer(ModelSerializer):
-    class Meta:
-        model = MobileFoodTrucks
-        fields = ('business_name', 'address', 'hours_of_operation', 'cuisine', 'permit_status' 'permit_exp_date', 'latitude', 'longitude')

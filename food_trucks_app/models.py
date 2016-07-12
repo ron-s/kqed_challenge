@@ -1,19 +1,25 @@
-from django.db import models
+# This is an auto-generated Django model module created by ogrinspect.
+from django.contrib.gis.db import models
 
-# Create your models here.
+
 class MobileFoodTrucks(models.Model):
-    objectid = models.IntegerField()
-    business_name = models.CharField(max_length=254)
+    locationid = models.IntegerField()
+    applicant = models.CharField(max_length=254)
+    facility = models.CharField(max_length=254)
+    block = models.CharField(max_length=254)
     address = models.CharField(max_length=254)
-    cuisine = models.CharField(max_length=254)
-    hours_of_operation = models.CharField(max_length=254)
-    permit_status = models.CharField(max_length=254)
-    permit_exp_date = models.CharField(max_length=254)
+    permit = models.CharField(max_length=254)
+    status = models.CharField(max_length=254)
+    fooditems = models.CharField(max_length=254)
+    x = models.FloatField()
+    y = models.FloatField()
     latitude = models.FloatField()
     longitude = models.FloatField()
-    
-
+    dayshours = models.CharField(max_length=254)
+    permit_exp = models.CharField(max_length=254)
+    location = models.CharField(max_length=254)
+    geom = models.PointField(srid=-1)
 
 
     def __str__(self):
-        return 'Business Name:' + " " + str(self.business_name) + " " + 'Address:' + self.address + " " + 'Hours of Operation:' + self.hours_of_operation + " " + 'Cuisine:' + self.cuisine + " " + 'cuisine:' + self.cuisine
+        return 'Business Name:' + " " + str(self.applicant) + " " + 'Cuisine:' + " " + self.fooditems + " "

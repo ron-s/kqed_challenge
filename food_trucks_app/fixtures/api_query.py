@@ -69,7 +69,6 @@ def get_truck_info():
 	#add the trucks dict to the food_trucks list
 	output.append(trucks)
 
-
 	#create a json file that contains the results.
 	with open('trucks.json', "w") as f:
 		json.dump(output, f, indent=2)

@@ -1,6 +1,18 @@
 import os
+
+
+# from django.contrib.gis.gdal import HAS_GDAL
+# print (HAS_GDAL)
+
 from django.contrib.gis.utils import LayerMapping
+
 from .models import MobileFoodTrucks
+# try:
+# # LayerMapping requires DJANGO_SETTINGS_MODULE to be set,
+# # so this needs to be in try/except.
+#     from django.contrib.gis.utils.layermapping import LayerMapping
+# except:
+#     pass
 
 trucks_mapping = {
     #remember 10 character limit
@@ -12,8 +24,8 @@ trucks_mapping = {
     'permit': 'permit',
     'status': 'status',
     'fooditems': 'fooditems',
-    'x': 'x',
-    'y': 'y',
+    'xcoordi': 'Xcoordi',
+    'ycoordi': 'Ycoordi',
     'dayshours': 'dayshours',
     'permit_exp': 'permit_exp',
     'location': 'location',

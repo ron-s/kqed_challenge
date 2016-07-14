@@ -3,7 +3,7 @@ var markers = [];
 function renderMap(checkboxID){
 
   $.ajax({
-      url: "http://localhost:8000/food_trucks_app/food_trucks_app_mobilefoodtrucks?format=json&group=" + checkboxID ,
+      url: "http://localhost:8000/food_trucks_app/food_trucks_app_mobilefoodtrucks?format=json&description=" + checkboxID ,
       type: 'GET',
       headers : {Accept: 'application/json'},
       dataType: 'json',

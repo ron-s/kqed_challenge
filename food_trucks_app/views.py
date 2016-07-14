@@ -15,7 +15,7 @@ View Controller objects that render serialized JSON data through the Django REST
 class MobileFoodTrucksViewSet(viewsets.ModelViewSet):
 
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = ('business_name', 'address', 'hours_of_operation', 'cuisine', 'permit_status' 'permit_exp_date', 'latitude', 'longitude',)
+    filter_fields = ('applicant', 'address', 'dayshours', 'fooditems', 'permit', 'permit_exp', 'latitude', 'longitude',)
     queryset = MobileFoodTrucks.objects.all()
     serializer_class = MobileFoodTruckSerializer
 

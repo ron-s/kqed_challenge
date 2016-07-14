@@ -96,175 +96,9 @@
                 </label>
             </div>
             </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="FALSE ALARMS">FALSE ALARMS
-                  </label>
-              </div>
-            </li>  
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="FRAUD CALLS">FRAUD CALLS
-                  </label>
-              </div>
-            </li>             
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="HARBOR CALLS">HARBOR CALLS
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="HAZARDS">HAZARDS
-                  </label>
-              </div>
-            </li>      
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="LEWD CONDUCT">LEWD CONDUCT
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="LIQUOR VIOLATIONS">LIQUOR VIOLATIONS
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="MENTAL HEALTH">MENTAL HEALTH
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="MISCELLANEOUS MISDEMEANORS">MISCELLANEOUS MISDEMEANORS
-                  </label>
-              </div>
-            </li>      
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="NARCOTICS COMPLAINTS">NARCOTICS COMPLAINTS
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="NUISANCE, MISCHIEF">NUISANCE, MISCHIEF
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="OTHER PROPERTY">OTHER PROPERTY
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="OTHER VICE">OTHER VICE
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="PERSON DOWN/INJURY ">PERSON DOWN/INJURY 
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="PERSONS - LOST, FOUND, MISSING">PERSONS - LOST, FOUND, MISSING
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="PROPERTY - MISSING, FOUND">PROPERTY - MISSING, FOUND
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="PROPERTY DAMAGE">PROPERTY DAMAGE
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="PROSTITUTION">PROSTITUTION
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="PROWLER">PROWLER
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="RECKLESS BURNING">RECKLESS BURNING
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="ROBBERY">ROBBERY
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="SHOPLIFTING">SHOPLIFTING
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="SUSPICIOUS CIRCUMSTANCES">SUSPICIOUS CIRCUMSTANCES
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="THREATS, HARASSMENT">THREATS, HARASSMENT
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="TRAFFIC RELATED CALLS">TRAFFIC RELATED CALLS
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="TRESPASS">TRESPASS
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="VICE CALLS">VICE CALLS
-                  </label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox"> 
-                  <label><input type="checkbox" id="WEAPONS CALLS">WEAPONS CALLS
-                  </label>
-              </div>
-            </li>
+
 
             <a href="#clear" class="btn btn-default" id="clear">Clear All Selections</a>
-            <a href="#violent-crime" class="btn btn-default" id="violence">Map Violent Crimes Only</a>
-
-            <!--<li>&nbsp;</li>-->
-            
-            
 
         </ul>
         </div>
@@ -290,7 +124,7 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <a href="#menu-toggle" class="btn btn-default top_btn" id="menu-toggle">Search by Zip</a>
+          <a href="#menu-toggle" class="btn btn-default top_btn" id="menu-toggle">Search by Neighborhood</a>
         <li>
         <form class="navbar-form" id="mapInput">
           {% csrf_token %}
@@ -311,7 +145,7 @@
   </div>
 
 
-  <div id="popup" title="Crime Detail"></div>
+  <div id="popup" title="Food Truck Detail"></div>
       </div>
 
 

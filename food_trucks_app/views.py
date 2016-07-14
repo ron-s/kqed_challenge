@@ -3,6 +3,9 @@ from rest_framework import viewsets, filters
 from .models import MobileFoodTrucks
 from .serializers import MobileFoodTruckSerializer
 
+from django.contrib.gis.measure import D
+from django.contrib.gis.geos import *
+
 
 """
 View Controller objects that render serialized JSON data through the Django REST framework.
@@ -25,3 +28,12 @@ def home_page(request):
     return render(request, 'index.html')
 
 
+
+def get_location(request):
+    #locate all food trucks within a 1 mile distance from the user
+    latitude = x
+    longitude = y
+    pnt = fromstr('POINT(x, y)', srid=4326)
+    qs = MobilefoodTrucks.objects.filter(point__distance_lte=(pnt, D(m=1)))
+
+    return location

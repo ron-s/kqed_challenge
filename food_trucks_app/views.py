@@ -3,6 +3,7 @@ from rest_framework import viewsets, filters
 from .models import MobileFoodTrucks
 from .serializers import MobileFoodTruckSerializer
 
+
 """
 View Controller objects that render serialized JSON data through the Django REST framework.
 """
@@ -22,3 +23,5 @@ class MobileFoodTrucksViewSet(viewsets.ModelViewSet):
 
 def home_page(request):
     return render(request, 'index.html')
+
+

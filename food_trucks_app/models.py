@@ -20,6 +20,5 @@ class MobileFoodTrucks(models.Model):
     location = models.CharField(max_length=254)
     geom = models.PointField(srid=-1)
 
-
     def __str__(self):
         return 'Business Name:' + " " + str(self.applicant) + " " + 'Cuisine:' + " " + self.fooditems + " "

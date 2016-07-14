@@ -31,9 +31,8 @@ def home_page(request):
 
 def get_location(request):
     #locate all food trucks within a 1 mile distance from the user
-    latitude = x
-    longitude = y
-    pnt = fromstr('POINT(x, y)', srid=4326)
+
+    pnt = fromstr('POINT("latitude", "longitude")', srid=4326)
     qs = MobilefoodTrucks.objects.filter(point__distance_lte=(pnt, D(m=1)))
 
     return location

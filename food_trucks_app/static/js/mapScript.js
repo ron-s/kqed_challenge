@@ -21,7 +21,9 @@ function renderMap(checkboxID){
           + '<div class="infowindow">' + obj.properties.address + '</div>' 
           + '<div class="infowindow">' + obj.properties.fooditems + '</div>' 
           + '<div class="infowindow">' + obj.properties.dayshours + '</div>' 
-          + '<div class="infowindow">' + obj.properties.block + '</div>';
+          + '<div class="infowindow">' + obj.properties.permit_exp + '</div>'
+          + '<div class="infowindow">' + obj.properties.latitude + '</div>'
+          + '<div class="infowindow">' + obj.properties.longitude + '</div>';
 
             var infowindow = new google.maps.InfoWindow();
             // add a click event listener when the user clicks on a marker to display the infowindow
@@ -110,18 +112,18 @@ $(document).ready(function() {
 
   //---Violent Crime Mapper----//
   //KS: TODO: THERE SHOULD BE A LESS HACKY WAY TO DO THIS.
-  $('#violence').click(function() {
-    $(".loader").fadeOut("slow");
-    $(':checkbox').prop('checked', false);
-    $("[id='Aggravated Assault']").prop('checked', true);
-    renderMap('Aggravated Assault');
-    $('#Homicide').prop('checked', true);
-    renderMap('Homicide');
-    $('#Rape').prop('checked', true);
-    renderMap('Rape')
-    $('#Robbery').prop('checked', true);
-    renderMap('Robbery');
-  });
+  // $('#violence').click(function() {
+  //   $(".loader").fadeOut("slow");
+  //   $(':checkbox').prop('checked', false);
+  //   $("[id='Aggravated Assault']").prop('checked', true);
+  //   renderMap('Aggravated Assault');
+  //   $('#Homicide').prop('checked', true);
+  //   renderMap('Homicide');
+  //   $('#Rape').prop('checked', true);
+  //   renderMap('Rape')
+  //   $('#Robbery').prop('checked', true);
+  //   renderMap('Robbery');
+  // });
   
   //----Clear all selections----/
   //KS: HACK ALERT

@@ -35,4 +35,4 @@ def get_location(request):
     pnt = fromstr('POINT("latitude", "longitude")', srid=4326)
     qs = MobilefoodTrucks.objects.filter(point__distance_lte=(pnt, D(m=1)))
 
-    return location
+    return render(request, 'index.html')

@@ -4,7 +4,8 @@ from .models import MobileFoodTrucks
 from .serializers import MobileFoodTruckSerializer
 
 from django.contrib.gis.measure import D
-from django.contrib.gis.geos import *
+from django.contrib.gis.geos import Point
+
 
 
 """
@@ -29,10 +30,22 @@ def home_page(request):
 
 
 
-def get_location(request):
-    #locate all food trucks within a 1 mile distance from the user
 
-    pnt = fromstr('POINT("latitude", "longitude")', srid=4326)
-    qs = MobilefoodTrucks.objects.filter(point__distance_lte=(pnt, D(m=1)))
+# class MobileFoodTrucksNearestView(viewsets.ModelViewSet):
 
-    return render(request, 'index.html')
+
+#     point = Point(lng, lat)
+
+#     filter_backends = (filters.DjangoFilterBackend,)
+#     filter_fields = ('applicant', 'address', 'dayshours', 'fooditems', 'permit', 'permit_exp', 'latitude', 'longitude',)
+#     queryset = MobileFoodTrucks.objects.all()
+#     queryset = queryset.filter(point__distance_lte=(point, D(m=1)))
+#     serializer_class = MobileFoodTruckSerializer
+
+#     class Meta:
+#         model = MobileFoodTrucks
+#         abstract = True
+
+
+# def home_page(request):
+#     return render(request, 'index.html')

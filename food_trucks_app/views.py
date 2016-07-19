@@ -7,7 +7,6 @@ from django.contrib.gis.measure import D
 from django.contrib.gis.geos import Point
 
 
-
 """
 View Controller objects that render serialized JSON data through the Django REST framework.
 """
@@ -31,10 +30,12 @@ def home_page(request):
 
 
 
+
 # class MobileFoodTrucksNearestView(viewsets.ModelViewSet):
 
-
-#     point = Point(lng, lat)
+#     latitude = lat
+#     longitude = lng
+#     point = Point(lat, lng)
 
 #     filter_backends = (filters.DjangoFilterBackend,)
 #     filter_fields = ('applicant', 'address', 'dayshours', 'fooditems', 'permit', 'permit_exp', 'latitude', 'longitude',)
@@ -44,8 +45,9 @@ def home_page(request):
 
 #     class Meta:
 #         model = MobileFoodTrucks
+#         geom = "point"
 #         abstract = True
 
 
-# def home_page(request):
-#     return render(request, 'index.html')
+# def nearest(request):
+#     return render(request, 'nearest.html')

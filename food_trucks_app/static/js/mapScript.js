@@ -3,7 +3,7 @@ var markers = [];
 function renderMap(checkboxID){
 
   $.ajax({
-      url: "http://localhost:8000/food_trucks_app/food_trucks_app_mobilefoodtrucks?format=json&description=" + checkboxID ,
+      url: "http://localhost:8000/api/trucks?description=" + checkboxID ,
       type: 'GET',
       headers : {Accept: 'application/json'},
       dataType: 'json',
@@ -42,11 +42,68 @@ function renderMap(checkboxID){
   });
 }
 
+function geolocate(latitude, longitude){
+
+  $.ajax({
+
+
+      url: "http://localhost:8000/api/trucks/nearest/",
+      type: 'GET',
+      headers : {Accept: 'application/json'},
+      dataType: 'json',
+      data: { latitude: latitude, longitude: longitude},
+
+      success:function(data) {
+          data.features.forEach(function (obj) {
+          console.log();
+          var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(obj.properties.latitude, obj.properties.longitude),
+              map: map,
+              title: "description"
+              });
+        });
+      }
+});
+}
+
+
+function showLocation(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+
+  geolocate(latitude, longitude);
+}
+
+function errorHandler(err) {
+  if(err.code == 1) {
+     alert("Error: Access is denied!");
+  }
+  
+  else if( err.code == 2) {
+     alert("Error: Position is unavailable!");
+  }
+}
+
+function getLocation(){
+
+  if(navigator.geolocation){
+     // timeout at 60000 milliseconds (60 seconds)
+     var options = {timeout:60000};
+     navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+  }
+  
+  else{
+     alert("Sorry, browser does not support geolocation!");
+  }
+}
+
+
+
 var center = new google.maps.LatLng(37.773972, -122.431297);
     var mapOptions = {
       zoom: 14,
       center: center
-    }
+    };
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     var infos = [];
@@ -133,4 +190,3 @@ $(document).ready(function() {
     });
 
   });
-

@@ -18,15 +18,17 @@ from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
 from rest_framework import routers
-from food_trucks_app import views as food_trucks_app_views
+from food_trucks_app import views 
+
 
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'food_trucks_app_mobilefoodtrucks', food_trucks_app_views.MobileFoodTrucksViewSet)  # name of the table
+router.register(r'trucks', views.MobileFoodTrucksViewSet)  # name of the table
 
 # Wire up our API using automatic URL routing.
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', food_trucks_app_views.home_page),
-    url(r'^food_trucks_app/', include(router.urls)),  # name of the app
+    url(r'^$', views.home_page),
+    url(r'^api/', include(router.urls)),  # name of the app
+    url(r'^api/trucks/nearest/', views.nearest),
 ]

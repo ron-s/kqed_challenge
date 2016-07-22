@@ -25,7 +25,7 @@ class MobileFoodTrucksViewSet(viewsets.ModelViewSet):
         abstract = True
 
 
-# use if you want to add to router approach
+# use this for a router only approach
 
 #     def nearest(self, request):
 #         latitude = lat
@@ -36,22 +36,21 @@ class MobileFoodTrucksViewSet(viewsets.ModelViewSet):
 #         return Response(serializer.data)
 
 
-
 def home_page(request):
     return render(request, 'index.html')
 
 
 def nearest(request):
-    #need to add decerator to prevent any request from being passed through this function
+    #need to add decorator to prevent any old request from being passed through this function!
     #import pdb; pdb.set_trace()
     if request.method == 'GET':
 
         lat = float(request.GET['latitude'])
         lng = float(request.GET['longitude'])
-        
 
-        origin = Point(lat, lng)
+        origin = Point(lng, lat)
 
         nearest = MobileFoodTrucks.objects.filter(point__distance_lte=(origin, D(m=1)))
         serializer = MobileFoodTruckSerializer(nearest, many=True)
+        print(serializer.data)
         return Response(serializer.data)

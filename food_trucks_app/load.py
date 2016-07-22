@@ -24,8 +24,6 @@ trucks_mapping = {
     'permit': 'permit',
     'status': 'status',
     'fooditems': 'fooditems',
-    'xcoordi': 'Xcoordi',
-    'ycoordi': 'Ycoordi',
     'dayshours': 'dayshours',
     'permit_exp': 'permit_exp',
     'location': 'location',

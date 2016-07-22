@@ -18,8 +18,7 @@ from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
 from rest_framework import routers
-from food_trucks_app import views 
-
+from food_trucks_app import views
 
 
 router = routers.DefaultRouter(trailing_slash=False)

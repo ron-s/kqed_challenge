@@ -50,7 +50,8 @@ def nearest(request):
 
         origin = Point(lng, lat)
 
+        import pdb; pdb.set_trace()
         nearest = MobileFoodTrucks.objects.filter(point__distance_lte=(origin, D(m=1)))
         serializer = MobileFoodTruckSerializer(nearest, many=True)
-        print(serializer.data)
+
         return Response(serializer.data)

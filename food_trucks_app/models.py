@@ -16,7 +16,11 @@ class MobileFoodTrucks(models.Model):
     dayshours = models.CharField(max_length=254)
     permit_exp = models.CharField(max_length=254)
     location = models.CharField(max_length=254)
-    geom = models.PointField(srid=-1)
+    point = models.PointField(srid=-1)
 
     def __str__(self):
         return 'Business Name:' + " " + str(self.applicant) + " " + 'Cuisine:' + " " + self.fooditems + " "
+
+    def save(self, *args, **kwargs):
+        self.point = Point(self.latitude, self.longitude)
+        super(MobileFoodTrucks, self).save(*args, **kwargs)

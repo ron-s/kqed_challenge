@@ -18,3 +18,8 @@ food_trucks_venv/
 food_trucks_app/data/
 
 .DS_Store
+# Elastic Beanstalk Files
+.ebextensions/
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

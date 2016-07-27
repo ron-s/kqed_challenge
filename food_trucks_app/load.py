@@ -29,7 +29,7 @@ trucks_mapping = {
     'location': 'location',
     'longitude': 'longitude',
     'latitude': 'latitude',
-    'geom': 'POINT',
+    'point': 'POINT',
 }
 
 # Copypaste from geodjango tutorial.

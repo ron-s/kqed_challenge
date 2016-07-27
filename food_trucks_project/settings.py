@@ -95,7 +95,7 @@ DATABASES = {
         'NAME': 'sfo_foodtrucks',
         'USER': 'kqed',
         'PASSWORD': password,
-        'HOST': 'localhost',
+        'HOST': 'sfo-foodtrucks.c6knfei0cwlf.us-west-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }

@@ -1,12 +1,57 @@
 var markers = [];
 
-function renderMap(checkboxID){
+// function renderMap(checkboxID){
+//   $.ajax({
+//       url: "http://localhost:8000/api/trucks/all/",
+//       type: 'GET',
+//       headers : {Accept: 'application/json'},
+//       dataType: 'json',
+//       success:function(data) {
+//           data.features.forEach(function (obj) {
+          
+//           var marker = new google.maps.Marker({
+//               position: new google.maps.LatLng(obj.properties.latitude, obj.properties.longitude),
+//               map: map,
+//               title: "description"
+//               });
+//           markers.push(marker);
+
+//           var content = '<div class="infowindow"><b>' + obj.properties.applicant + '</b></div>' 
+//           + '<div class="infowindow">' + obj.properties.address + '</div>' 
+//           + '<div class="infowindow">' + obj.properties.fooditems + '</div>' 
+//           + '<div class="infowindow">' + obj.properties.dayshours + '</div>' 
+//           + '<div class="infowindow">' + obj.properties.permit_exp + '</div>'
+//           + '<div class="infowindow">' + obj.properties.latitude + '</div>'
+//           + '<div class="infowindow">' + obj.properties.longitude + '</div>';
+
+//             var infowindow = new google.maps.InfoWindow();
+//             // add a click event listener when the user clicks on a marker to display the infowindow
+//             google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
+//                 return function () {
+//                     // close the previous info-window
+//                     closeInfos();
+//                     infowindow.setContent(content);
+//                     infowindow.open(map, marker);
+//                     // keep the handle, in order to close it on next click event
+//                     infos[0] = infowindow;
+//                 };
+//             })(marker, content, infowindow));
+//         });
+//     }
+//   });
+// }
+
+function geolocate(latitude, longitude){
+  var radius = 233  ;
 
   $.ajax({
-      url: "http://localhost:8000/api/trucks?description=" + checkboxID ,
+
+      url: "http://localhost:8000/api/trucks/nearby/",
       type: 'GET',
       headers : {Accept: 'application/json'},
       dataType: 'json',
+      data: { latitude: latitude, longitude: longitude, radius: radius},
+
       success:function(data) {
           data.features.forEach(function (obj) {
           
@@ -42,30 +87,6 @@ function renderMap(checkboxID){
   });
 }
 
-function geolocate(latitude, longitude){
-
-  $.ajax({
-
-
-      url: "http://localhost:8000/api/trucks/nearest/",
-      type: 'GET',
-      headers : {Accept: 'application/json'},
-      dataType: 'json',
-      data: { latitude: latitude, longitude: longitude},
-
-      success:function(data) {
-          data.features.forEach(function (obj) {
-          console.log();
-          var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(obj.properties.latitude, obj.properties.longitude),
-              map: map,
-              title: "description"
-              });
-        });
-      }
-});
-}
-
 
 function showLocation(position) {
   var latitude = position.coords.latitude;
@@ -89,7 +110,7 @@ function getLocation(){
   if(navigator.geolocation){
      // timeout at 60000 milliseconds (60 seconds)
      var options = {timeout:60000};
-     navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+     navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options) ;
   }
   
   else{
@@ -97,6 +118,8 @@ function getLocation(){
   }
 }
 
+
+getLocation();
 
 
 var center = new google.maps.LatLng(37.773972, -122.431297);

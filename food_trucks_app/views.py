@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from rest_framework import viewsets, filters
+from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.renderers import JSONRenderer
 from .models import MobileFoodTrucks
 from .serializers import MobileFoodTruckSerializer
+from rest_framework.response import Response
 
-from django.contrib.gis.measure import D
+#from django.contrib.gis.measure import D
 from django.contrib.gis.geos import Point
 
 
@@ -39,19 +42,22 @@ class MobileFoodTrucksViewSet(viewsets.ModelViewSet):
 def home_page(request):
     return render(request, 'index.html')
 
+#issue bad request response
 
+
+@api_view(['GET'])
+@renderer_classes((JSONRenderer,))
 def nearest(request):
     #need to add decorator to prevent any old request from being passed through this function!
     #import pdb; pdb.set_trace()
-    if request.method == 'GET':
+    radius = float(request.GET['radius'])
+    lat = float(request.GET['latitude'])
+    lng = float(request.GET['longitude'])
+    origin = Point(lng, lat)
 
-        lat = float(request.GET['latitude'])
-        lng = float(request.GET['longitude'])
+    trucks = MobileFoodTrucks.objects.all()
+    nearby = [truck for truck in trucks if truck.point.distance(origin) <= radius]
 
-        origin = Point(lng, lat)
-
-        import pdb; pdb.set_trace()
-        nearest = MobileFoodTrucks.objects.filter(point__distance_lte=(origin, D(m=1)))
-        serializer = MobileFoodTruckSerializer(nearest, many=True)
-
-        return Response(serializer.data)
+    #nearest = MobileFoodTrucks.objects.filter(point__distance_lte=(origin, D(m=1)))
+    serializer = MobileFoodTruckSerializer(nearby, many=True)
+    return Response(serializer.data)

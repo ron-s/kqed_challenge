@@ -29,5 +29,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home_page),
     url(r'^api/', include(router.urls)),  # name of the app
-    url(r'^api/trucks/nearest/', views.nearest),
+    url(r'^api/trucks/nearby/', views.nearest),
 ]

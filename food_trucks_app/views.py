@@ -6,9 +6,9 @@ from .models import MobileFoodTrucks
 from .serializers import MobileFoodTruckSerializer
 from rest_framework.response import Response
 
-from django.contrib.gis.measure import Distance
+#from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import Point
-from geopy import distance as geodistance
+from geopy import distance
 
 """
 View Controller objects that render serialized JSON data through the Django REST framework.
@@ -58,10 +58,10 @@ def nearest(request):
     trucks = MobileFoodTrucks.objects.all()
 
     for truck in trucks:
-        print(geodistance.distance(origin, truck.point).miles)
+        print(distance.distance(origin, truck.point).miles)
 
-    nearby = [truck for truck in trucks if geodistance.distance(origin, truck.point).miles <= radius]
-    print(len(nearby))
+    nearby = [truck for truck in trucks if distance.distance(origin, truck.point).miles <= radius]
+    #print(len(nearby))
     #nearest = MobileFoodTrucks.objects.filter(point__distance_lte=(origin, D(mi=1)))
  
     serializer = MobileFoodTruckSerializer(nearby, many=True)

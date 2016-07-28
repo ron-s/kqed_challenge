@@ -6,7 +6,7 @@ from .models import MobileFoodTrucks
 from .serializers import MobileFoodTruckSerializer
 from rest_framework.response import Response
 
-#from django.contrib.gis.measure import D
+from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import Point
 
 
@@ -59,5 +59,7 @@ def nearest(request):
     nearby = [truck for truck in trucks if truck.point.distance(origin) <= radius]
 
     #nearest = MobileFoodTrucks.objects.filter(point__distance_lte=(origin, D(m=1)))
+    #nearby = MobileFoodTrucks.objects.filter(location__distance_lt=(origin, Distance(m=radius)))
+
     serializer = MobileFoodTruckSerializer(nearby, many=True)
     return Response(serializer.data)

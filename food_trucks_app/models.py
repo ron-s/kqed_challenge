@@ -23,5 +23,6 @@ class MobileFoodTrucks(geomodels.Model):
         return 'Business Name:' + " " + str(self.applicant) + " " + 'Cuisine:' + " " + self.fooditems + " "
 
     def save(self, *args, **kwargs):
-        self.point = Point(self.latitude, self.longitude)
+        #self.point = Point(self.latitude, self.longitude)
+        self.point = Point(self.longitude, self.latitude)
         super(MobileFoodTrucks, self).save(*args, **kwargs)

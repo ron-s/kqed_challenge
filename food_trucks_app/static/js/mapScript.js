@@ -42,7 +42,7 @@ var markers = [];
 // }
 
 function geolocate(latitude, longitude){
-  var radius = 233  ;
+  var radius = 100;
 
   $.ajax({
 
@@ -147,7 +147,7 @@ var center = new google.maps.LatLng(37.773972, -122.431297);
     //   map.removeLayer(vectorLayer);
     // }
 
-    renderMap();
+    //renderMap();
 
 
 

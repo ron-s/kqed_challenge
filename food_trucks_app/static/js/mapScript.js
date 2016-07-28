@@ -42,7 +42,7 @@ var markers = [];
 // }
 
 function geolocate(latitude, longitude){
-  var radius = 100;
+  var radius = 1;
 
   $.ajax({
 

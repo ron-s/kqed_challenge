@@ -8,7 +8,7 @@ from rest_framework.response import Response
 
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import Point
-
+from geopy import distance as geodistance
 
 """
 View Controller objects that render serialized JSON data through the Django REST framework.
@@ -53,13 +53,16 @@ def nearest(request):
     radius = float(request.GET['radius'])
     lat = float(request.GET['latitude'])
     lng = float(request.GET['longitude'])
-    origin = Point(lng, lat)
-
+    origin = Point(lat, lng)
+    #import pdb; pdb.set_trace()
     trucks = MobileFoodTrucks.objects.all()
-    nearby = [truck for truck in trucks if truck.point.distance(origin) <= radius]
 
-    #nearest = MobileFoodTrucks.objects.filter(point__distance_lte=(origin, D(m=1)))
-    #nearby = MobileFoodTrucks.objects.filter(location__distance_lt=(origin, Distance(m=radius)))
+    for truck in trucks:
+        print(geodistance.distance(origin, truck.point).miles)
 
+    nearby = [truck for truck in trucks if geodistance.distance(origin, truck.point).miles <= radius]
+    print(len(nearby))
+    #nearest = MobileFoodTrucks.objects.filter(point__distance_lte=(origin, D(mi=1)))
+ 
     serializer = MobileFoodTruckSerializer(nearby, many=True)
     return Response(serializer.data)

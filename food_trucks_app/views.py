@@ -5,7 +5,7 @@ from rest_framework.renderers import JSONRenderer
 from .models import MobileFoodTrucks
 from .serializers import MobileFoodTruckSerializer
 from rest_framework.response import Response
-
+from food_trucks_project.hidden import map_key
 #from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import Point
 from geopy import distance
@@ -40,7 +40,7 @@ class MobileFoodTrucksViewSet(viewsets.ModelViewSet):
 
 
 def home_page(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {"mapkey":map_key})
 
 #issue bad request response
 
@@ -57,8 +57,8 @@ def nearest(request):
     #import pdb; pdb.set_trace()
     trucks = MobileFoodTrucks.objects.all()
 
-    for truck in trucks:
-        print(distance.distance(origin, truck.point).miles)
+    # for truck in trucks:
+    #     print(distance.distance(origin, truck.point).miles)
 
     nearby = [truck for truck in trucks if distance.distance(origin, truck.point).miles <= radius]
     #print(len(nearby))

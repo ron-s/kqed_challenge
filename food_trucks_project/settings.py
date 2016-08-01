@@ -16,8 +16,6 @@ from .hidden import password, secretkey
 
 
 
-
-
 SPATIALITE_LIBRARY_PATH = '/usr/local/lib/mod_spatialite.dylib'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

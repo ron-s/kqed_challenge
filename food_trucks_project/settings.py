@@ -15,7 +15,6 @@ import os
 from .hidden import password, secretkey
 
 
-
 SPATIALITE_LIBRARY_PATH = '/usr/local/lib/mod_spatialite.dylib'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -29,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = secretkey
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -46,21 +45,21 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_gis',
     'django.contrib.gis',
-    'food_trucks_app',
-    'corsheaders'
+    'food_trucks_app'
+    #'corsheaders'
 ]
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware'
+    #'corsheaders.middleware.CorsMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'food_trucks_project.urls'
@@ -143,13 +142,13 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_HEADERS = (
-    'x-requested-with',
-    'content-type',
-    'accept',
-    'origin',
-    'authorization',
-    'x-csrftoken'
-    )
+# CORS_ALLOW_HEADERS = (
+#     'x-requested-with',
+#     'content-type',
+#     'accept',
+#     'origin',
+#     'authorization',
+#     'x-csrftoken'
+#     )
